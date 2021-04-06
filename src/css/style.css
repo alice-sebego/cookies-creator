@@ -73,3 +73,33 @@ input[type="date"]{
 #buttons > input:hover{
     background-color: rgb(4, 103, 173);
 }
+
+@media (max-width: 700px){
+    
+    main{
+        width: 60%;
+    }
+
+}
+
+@media (max-width: 465px){
+    
+    h1{
+        font-size: 2em;
+    }
+
+    main{
+        width: 60%;
+    }
+
+    #buttons{
+        flex-direction: column;
+    }
+
+    #buttons > input{
+        margin-bottom: 1.5vh;
+        font-size: 0.75em;
+        
+    }
+
+}

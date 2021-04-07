@@ -10,27 +10,30 @@
 </head>
 <body>
     <header>
-        <h1>Créateur de cookies</h1>
+        <h1>Créateur de cookies 🍪🍪🍪</h1>
     </header>
     <main>
-        <form action="">
+        <form>
             <fieldset>
                 <label for="name-cookie">Nom du cookie</label>
-                <input type="text" name="" id="name-cookie">
+                <input type="text" name="cookieName" id="name-cookie">
             </fieldset>
             <fieldset>
                 <label for="cookie-value">Valeur du cookie</label>
-                <input type="number" name="" id="cookie-value">
+                <input type="number" name="cookieValue" id="cookie-value">
             </fieldset>
             <fieldset>
                 <label for="expiration">Date d'expiration du cookie</label>
-                <input type="date" name="" id="expiration">
+                <input type="date" name="cookieExpire" id="expiration">
             </fieldset>
             <div id="buttons">
-                <input type="submit" value="Créer le cookie">
-                <input type="button" value="Afficher le cookie">
+                <input type="submit" data-cookie="create" value="Créer le cookie">
+                <input type="button" data-cookie="display" value="Afficher le cookie">
             </div>
         </form>
+
+        <div id="info-txt"></div>
+        <ul id="recapitulate"></ul>
     </main>
     
 </body>

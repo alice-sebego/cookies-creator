@@ -4,6 +4,8 @@ const $buttons = document.querySelectorAll("#buttons > input");
 const $infoTxt = document.querySelector("#info-txt");
 const $recapitulate = document.querySelector("#recapitulate");
 
+let existingName = false;
+
 // Handle date's data
 const today = new Date();
 const nextWeek = new Date(today.getTime() + 7 * 24 * 60 * 60 * 1000);
@@ -53,7 +55,26 @@ $buttons.forEach( button => {
 const createCookie = (name, value, exp) =>{
 
     $infoTxt.innerHTML = "";
+
+    // Handle existing cookies
+    let cookies = document.cookie.split(";");
     
+    cookies.forEach(cookie =>{
+        cookie = cookie.trim();
+        let formatCookie = cookie.split("=");
+        console.log(formatCookie);
+        if(formatCookie[0] === encodeURIComponent(name)){
+            existingName = true;
+        }
+    });
+
+    if(existingName){
+        $infoTxt.innerHTML = `Dsl, ce cookie existe déjà !`;
+        existingName = false;
+        return;
+    }
+    
+    // Input name of cookie is empty
     if(name.length === 0){
         $infoTxt.innerHTML = `Impossible de créer un cookie sans nom :(`;
         return;

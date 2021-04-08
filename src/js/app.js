@@ -52,6 +52,12 @@ $buttons.forEach( button => {
  */
 const createCookie = (name, value, exp) =>{
 
+    $infoTxt.innerHTML = "";
+    
+    if(name.length === 0){
+        $infoTxt.innerHTML = `Impossible de créer un cookie sans nom :(`;
+        return;
+    }
     document.cookie = `${encodeURIComponent(name)}=${encodeURIComponent(value)};expires=${exp.toUTCString()}`;
 
     let info = document.createElement("li");

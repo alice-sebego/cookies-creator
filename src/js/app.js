@@ -83,6 +83,8 @@ const createCookie = (name, value, exp) =>{
         emptyTxtContent($infoTxt);
         return;
     }
+    
+    // Create cookie is all input's content is ok
     document.cookie = `${encodeURIComponent(name)}=${encodeURIComponent(value)};expires=${exp.toUTCString()}`;
 
     let info = document.createElement("li");
@@ -95,20 +97,33 @@ const createCookie = (name, value, exp) =>{
 }
 
 const listCookie = () =>{
-
+    
     let cookies = document.cookie.split(";")
+    
+    // Handle action when it is any cookie
     if(cookies.join() === ""){
         $infoTxt.innerHTML = `Pas de cookies à afficher`;
         return;
     }
 
+    //Handle action when there is an existing cookie or more
     cookies.forEach( cookie =>{
         cookie = cookie.trim();
         let formatCookie = cookie.split("=");
 
+        $infoTxt.innerHTML = "Cliquez sur un cookie de la liste pour le supprimer"
         let item = document.createElement("li");
-        item.innerHTML = `Nom : <strong>${decodeURIComponent(formatCookie[0])}</strong> - Valeur : <strong>${decodeURIComponent(formatCookie[1])}</strong> `;
+        item.innerHTML = `Nom : <span>${decodeURIComponent(formatCookie[0])}</span> - Valeur : <span>${decodeURIComponent(formatCookie[1])}</span> `;
         $recapitulate.appendChild(item);
+
+        // Remove a cookie
+        item.addEventListener("click", ()=>{
+            document.cookie = `${formatCookie[0]}=; expires=${new Date(0)}`;
+            item.innerHTML = `Cookie <span>${formatCookie[0]}</span> supprimé`;
+            setTimeout(()=>{
+                item.remove()
+            }, 2000)
+        })
     })
 
 }

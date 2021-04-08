@@ -72,6 +72,7 @@ input[type="date"]{
 }
 
 #info-txt{
+    margin: 2vh 0;
     text-align: center;
     font-size: larger;
     font-weight: bolder;
@@ -79,6 +80,10 @@ input[type="date"]{
 
 #recapitulate{
     list-style-type: none;
+}
+
+#recapitulate span{
+    font-weight: bolder;
 }
 
 @media (max-width: 700px){

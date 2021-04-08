@@ -20,9 +20,6 @@ h1{
 main{
     width: 40%;
     margin: 2vh auto;
-}
-
-form{
     font-family: Poppins, Arial, Helvetica, sans-serif;
 }
 
@@ -72,6 +69,10 @@ input[type="date"]{
 
 #buttons > input:hover{
     background-color: rgb(4, 103, 173);
+}
+
+#recapitulate{
+    list-style-type: none;
 }
 
 @media (max-width: 700px){

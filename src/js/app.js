@@ -91,4 +91,24 @@ const createCookie = (name, value, exp) =>{
     setTimeout(()=>{
         info.remove()
     }, 2000);
+    
+}
+
+const listCookie = () =>{
+
+    let cookies = document.cookie.split(";")
+    if(cookies.join() === ""){
+        $infoTxt.innerHTML = `Pas de cookies à afficher`;
+        return;
+    }
+
+    cookies.forEach( cookie =>{
+        cookie = cookie.trim();
+        let formatCookie = cookie.split("=");
+
+        let item = document.createElement("li");
+        item.innerHTML = `Nom : <strong>${decodeURIComponent(formatCookie[0])}</strong> - Valeur : <strong>${decodeURIComponent(formatCookie[1])}</strong> `;
+        $recapitulate.appendChild(item);
+    })
+
 }

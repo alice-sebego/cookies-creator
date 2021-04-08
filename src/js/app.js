@@ -1,3 +1,5 @@
+import {emptyTxtContent} from './utils.js';
+
 // Elements of DOM
 const $inputsFieldset = document.querySelectorAll("fieldset > input");
 const $buttons = document.querySelectorAll("#buttons > input");
@@ -71,12 +73,14 @@ const createCookie = (name, value, exp) =>{
     if(existingName){
         $infoTxt.innerHTML = `Dsl, ce cookie existe déjà !`;
         existingName = false;
+        emptyTxtContent($infoTxt);
         return;
     }
     
     // Input name of cookie is empty
     if(name.length === 0){
         $infoTxt.innerHTML = `Impossible de créer un cookie sans nom :(`;
+        emptyTxtContent($infoTxt);
         return;
     }
     document.cookie = `${encodeURIComponent(name)}=${encodeURIComponent(value)};expires=${exp.toUTCString()}`;

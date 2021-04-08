@@ -71,6 +71,12 @@ input[type="date"]{
     background-color: rgb(4, 103, 173);
 }
 
+#info-txt{
+    text-align: center;
+    font-size: larger;
+    font-weight: bolder;
+}
+
 #recapitulate{
     list-style-type: none;
 }

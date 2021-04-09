@@ -123,6 +123,8 @@ const listCookie = () =>{
         item.addEventListener("click", ()=>{
             document.cookie = `${formatCookie[0]}=; expires=${new Date(0)}`;
             item.innerHTML = `Cookie <span>${formatCookie[0]}</span> supprimé`;
+            item.style.opacity = `0`;
+            item.style.transition = `opacity 2s ease-in-out`;
             setTimeout(()=>{
                 item.remove()
             }, 2000)

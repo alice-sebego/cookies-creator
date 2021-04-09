@@ -57,6 +57,7 @@ $buttons.forEach( button => {
 const createCookie = (name, value, exp) =>{
 
     $infoTxt.innerHTML = "";
+    $recapitulate.innerHTML ="";
 
     // Handle existing cookies
     let cookies = document.cookie.split(";");
@@ -79,7 +80,7 @@ const createCookie = (name, value, exp) =>{
     
     // Input name of cookie is empty
     if(name.length === 0){
-        $infoTxt.innerHTML = `Impossible de créer un cookie sans nom :(`;
+        $infoTxt.innerHTML = `Dsl ! Impossible de créer un cookie sans nom`;
         emptyTxtContent($infoTxt);
         return;
     }
@@ -104,14 +105,16 @@ const listCookie = () =>{
     if(cookies.join() === ""){
         $infoTxt.innerHTML = `Pas de cookies à afficher`;
         return;
+    } else {
+        $infoTxt.innerHTML = "Cliquez sur un cookie de la liste pour le supprimer";
     }
 
     //Handle action when there is an existing cookie or more
     cookies.forEach( cookie =>{
+        
         cookie = cookie.trim();
         let formatCookie = cookie.split("=");
 
-        $infoTxt.innerHTML = "Cliquez sur un cookie de la liste pour le supprimer"
         let item = document.createElement("li");
         item.innerHTML = `Nom : <span>${decodeURIComponent(formatCookie[0])}</span> - Valeur : <span>${decodeURIComponent(formatCookie[1])}</span> `;
         $recapitulate.appendChild(item);

@@ -95,6 +95,10 @@ const createCookie = (name, value, exp) =>{
     
 }
 
+/**
+ * Display list of created cookies
+ * @returns several li
+ */
 const listCookie = () =>{
     
     let cookies = document.cookie.split(";")

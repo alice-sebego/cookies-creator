@@ -1,4 +1,4 @@
-import {emptyTxtContent} from './utils.js';
+import * as util from './utils.js';
 
 // Elements of DOM
 const $inputsFieldset = document.querySelectorAll("fieldset > input");
@@ -47,7 +47,6 @@ $buttons.forEach( button => {
     button.addEventListener("click", btnAction);
 });
 
-
 /**
  * Create a cookie on the document
  * @param {string} name 
@@ -65,7 +64,6 @@ const createCookie = (name, value, exp) =>{
     cookies.forEach(cookie =>{
         cookie = cookie.trim();
         let formatCookie = cookie.split("=");
-        console.log(formatCookie);
         if(formatCookie[0] === encodeURIComponent(name)){
             existingName = true;
         }
@@ -74,14 +72,14 @@ const createCookie = (name, value, exp) =>{
     if(existingName){
         $infoTxt.innerHTML = `Dsl, ce cookie existe déjà !`;
         existingName = false;
-        emptyTxtContent($infoTxt);
+        util.emptyTxtContent($infoTxt);
         return;
     }
     
     // Input name of cookie is empty
     if(name.length === 0){
         $infoTxt.innerHTML = `Dsl ! Impossible de créer un cookie sans nom`;
-        emptyTxtContent($infoTxt);
+        util.emptyTxtContent($infoTxt);
         return;
     }
     
@@ -89,11 +87,11 @@ const createCookie = (name, value, exp) =>{
     document.cookie = `${encodeURIComponent(name)}=${encodeURIComponent(value)};expires=${exp.toUTCString()}`;
 
     let info = document.createElement("li");
-    info.innerHTML = `Le cookie ${name} est créé !`;
+    info.innerHTML = `Le cookie <span>${name}</span> est créé !`;
     $recapitulate.appendChild(info);
     setTimeout(()=>{
         info.remove()
-    }, 2000);
+    }, 2500);
     
 }
 
@@ -103,32 +101,32 @@ const listCookie = () =>{
     
     // Handle action when it is any cookie
     if(cookies.join() === ""){
+
         $infoTxt.innerHTML = `Pas de cookies à afficher`;
         return;
+
     } else {
-        $infoTxt.innerHTML = "Cliquez sur un cookie de la liste pour le supprimer";
-    }
+  
+        //Handle action when there is an existing cookie or more
+        cookies.forEach( cookie =>{
+            
+            cookie = cookie.trim();
+            let formatCookie = cookie.split("=");
+            $infoTxt.innerHTML = "Cliquez sur un cookie de la liste pour le supprimer";
+            let item = document.createElement("li");
+            item.innerHTML = `Nom : <span>${decodeURIComponent(formatCookie[0])}</span> - Valeur : <span>${decodeURIComponent(formatCookie[1])}</span> `;
+            $recapitulate.appendChild(item);
 
-    //Handle action when there is an existing cookie or more
-    cookies.forEach( cookie =>{
-        
-        cookie = cookie.trim();
-        let formatCookie = cookie.split("=");
-
-        let item = document.createElement("li");
-        item.innerHTML = `Nom : <span>${decodeURIComponent(formatCookie[0])}</span> - Valeur : <span>${decodeURIComponent(formatCookie[1])}</span> `;
-        $recapitulate.appendChild(item);
-
-        // Remove a cookie
-        item.addEventListener("click", ()=>{
-            document.cookie = `${formatCookie[0]}=; expires=${new Date(0)}`;
-            item.innerHTML = `Cookie <span>${formatCookie[0]}</span> supprimé`;
-            item.style.opacity = `0`;
-            item.style.transition = `opacity 2s ease-in-out`;
-            setTimeout(()=>{
-                item.remove()
-            }, 2000)
+            // Remove a cookie
+            item.addEventListener("click", ()=>{
+                document.cookie = `${formatCookie[0]}=; expires=${new Date(0)}`;
+                item.innerHTML = `Cookie <span>${formatCookie[0]}</span> supprimé`;
+                util.changeOpacity(item);
+                setTimeout(()=>{
+                    item.remove()
+                }, 2000);
+            })
         })
-    })
+    }
 
 }

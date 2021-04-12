@@ -82,7 +82,8 @@ input[type="date"]{
     list-style-type: none;
 }
 
-#recapitulate span{
+#recapitulate span, 
+#info-txt span{
     font-weight: bolder;
 }
 

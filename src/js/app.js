@@ -98,7 +98,7 @@ const createCookie = (name, value, exp) =>{
 const listCookie = () =>{
     
     let cookies = document.cookie.split(";")
-    
+    $recapitulate.innerHTML = "";
     // Handle action when it is any cookie
     if(cookies.join() === ""){
 

@@ -19,7 +19,7 @@ h1{
 
 main{
     width: 40%;
-    margin: 2vh auto;
+    margin: 2vh auto 10vh auto;
     font-family: Poppins, Arial, Helvetica, sans-serif;
 }
 
@@ -82,7 +82,8 @@ input[type="date"]{
     list-style-type: none;
 }
 
-#recapitulate li:hover{
+#recapitulate li:hover,
+#recapitulate li:focus{
     background: #eee;
 }
 
@@ -92,11 +93,10 @@ input[type="date"]{
 }
 
 footer{
-    margin-top: 10vh;
     padding: 5vh 4vw;
-    border-top: 1px dashed #ccc;
     text-align: center;
     font-family: Poppins, Arial, Helvetica, sans-serif;
+    box-shadow: 0 -.2em .5em rgba(0, 0, 0, 0.1);
 }
 
 footer a{

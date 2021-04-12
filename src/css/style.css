@@ -87,6 +87,25 @@ input[type="date"]{
     font-weight: bolder;
 }
 
+footer{
+    margin-top: 10vh;
+    padding: 5vh 4vw;
+    border-top: 1px dashed #ccc;
+    text-align: center;
+    font-family: Poppins, Arial, Helvetica, sans-serif;
+}
+
+footer a{
+    color: rgb(4, 135, 228);
+    transition: 0.2s ease-in-out;
+}
+
+footer a:hover, 
+footer a:active{
+    color: rgb(4, 103, 173);
+    font-weight: bolder;
+}
+
 @media (max-width: 700px){
     
     main{

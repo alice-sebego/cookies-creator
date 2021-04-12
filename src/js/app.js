@@ -114,6 +114,8 @@ const listCookie = () =>{
             let formatCookie = cookie.split("=");
             $infoTxt.innerHTML = "Cliquez sur un cookie de la liste pour le supprimer";
             let item = document.createElement("li");
+            item.setAttribute("role", "tab");
+            item.setAttribute("tabindex", "0")
             item.innerHTML = `Nom : <span>${decodeURIComponent(formatCookie[0])}</span> - Valeur : <span>${decodeURIComponent(formatCookie[1])}</span> `;
             $recapitulate.appendChild(item);
 

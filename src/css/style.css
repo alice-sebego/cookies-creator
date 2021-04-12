@@ -82,6 +82,10 @@ input[type="date"]{
     list-style-type: none;
 }
 
+#recapitulate li:hover{
+    background: #eee;
+}
+
 #recapitulate span, 
 #info-txt span{
     font-weight: bolder;
@@ -130,8 +134,7 @@ footer a:active{
 
     #buttons > input{
         margin-bottom: 1.5vh;
-        font-size: 0.75em;
-        
+        font-size: 0.75em;    
     }
 
 }
